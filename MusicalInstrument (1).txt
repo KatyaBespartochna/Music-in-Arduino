@@ -1,0 +1,55 @@
+//Make .ino file
+
+//www.elegoo.com
+//2016.12.08
+// 1) copy and paste pitches refrences
+#define T_C 262
+#define T_D 294
+
+
+//adding LED
+//#define RED 3; //blue
+//#define WHITE 5;//green
+//#define BLACK 7; //red
+
+//assign a constant to the pitch
+const int C = 9;
+const int D = 8;
+
+const int Buzz = 11;
+const int LED = 13; 
+//assigning the input port for buzzer and matrix display
+ 
+int duration = 500;
+
+void setup()
+{  
+  pinMode(LED, OUTPUT);
+  pinMode(C, INPUT);
+  digitalWrite(C,HIGH);
+  
+  pinMode(D, INPUT);
+  digitalWrite(D,HIGH);
+}
+
+ 
+ 
+
+void loop(){
+  while(digitalRead(C) == LOW)
+  {
+    tone(Buzz,T_C);
+    digitalWrite(LED,HIGH);
+    delay(1000); // Output the voice after several minutes
+ }
+
+  while(digitalRead(D) == LOW)
+  {
+    tone(Buzz,T_D);
+    digitalWrite(LED,HIGH);
+    delay(2000); //// restart after two seconds 
+  }
+  noTone(Buzz);
+  digitalWrite(LED,LOW);
+
+}
